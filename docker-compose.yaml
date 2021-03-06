@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  engine:
+    build: ./sipresengine
+    container_name: sipresengine
+    logging:
+      options:
+        max-size: 10m
+    environment:
+      - BOT_TOKEN=${BOT_TOKEN}
+      - DB_HOST=${DB_HOST}
+      - DB_USER=${DB_USER}
+      - DB_PASS=${DB_PASS}
+      - DB_NAME=${DB_NAME}
+      - SIPRES_USER=${SIPRES_USER}
+      - SIPRES_PASS=${SIPRES_PASS}
+      - ENV=${ENV}
+    volumes:
+      - chromedata:/app/chromeprofile
+    restart: always
+
+  bot:
+    build: ./sipresbot
+    container_name: sipresbot
+    environment:
+      - BOT_TOKEN=${BOT_TOKEN}
+      - DB_HOST=${DB_HOST}
+      - DB_USER=${DB_USER}
+      - DB_PASS=${DB_PASS}
+      - DB_NAME=${DB_NAME}
+      - ENV=${ENV}
+    logging:
+      options:
+        max-size: 10m
+    restart: always
+
+volumes:
+  chromedata:
+    name: chromedata
