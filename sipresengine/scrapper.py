@@ -132,7 +132,6 @@ def get_event():
 		img = raw_img.replace("..","https://sipresmawa.umsida.ac.id")
 
 		events_title.append(judul);
-		print(events_title)
 		events.append({
 			'judul' : judul,
 			'kuota' : kuota,
