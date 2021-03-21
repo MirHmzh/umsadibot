@@ -84,7 +84,7 @@ try:
 except TimeoutException:
     print('Unable to interract with submit login button after 10s')
 
-past_event = []
+past_event_title = []
 
 def setInterval(func,time):
     e = threading.Event()
@@ -112,7 +112,8 @@ def get_event():
 		print(datetime.now().strftime("%d/%m/%Y %H:%M:%S")+" Failed to visiting event page")
 	dom = driver.find_elements_by_class_name('col-md-3')
 	events = []
-	global past_event
+	events_title = []
+	global past_event_title
 	for doms in dom:
 		raw_comment = doms.get_attribute("innerHTML")
 		splice1 = raw_comment.replace("<!-- DIRECT CHAT PRIMARY -->", "")
@@ -130,6 +131,8 @@ def get_event():
 		raw_img = raw('.box-body div center a img').attr('src')
 		img = raw_img.replace("..","https://sipresmawa.umsida.ac.id")
 
+		events_title.append(judul);
+		print(events_title)
 		events.append({
 			'judul' : judul,
 			'kuota' : kuota,
@@ -138,10 +141,10 @@ def get_event():
 			'img' : img,
 		});
 
-	if ''.join(map(str, past_event)) != ''.join(map(str, events)):
+	if ''.join(map(str, past_event_title)) != ''.join(map(str, events_title)):
 		broadcast(events)
 
-	past_event = events
+	past_event_title = events_title
 
 get_event()
 setInterval(get_event, 300)
