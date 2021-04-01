@@ -130,6 +130,7 @@ def get_event():
 		jadwal = raw('table tbody tr:nth-child(3) td:nth-child(2) i').text()
 		raw_img = raw('.box-body div center a img').attr('src')
 		img = raw_img.replace("..","https://sipresmawa.umsida.ac.id")
+		judul = judul.replace("&", "dan")
 
 		events_title.append(judul);
 		events.append({
