@@ -178,7 +178,7 @@ bot.on('text', (ctx) => {
 	// Handle user input
 	if (ctx.update.message.from.id != owner_id) {
 		let message = `
-			Meta Message : ${"first_name" in ctx.update.message.from ? ctx.update.message.from.first_name : 'First Name not available'} ${"last_name" in ctx.update.message.from ? ctx.update.message.from.last_name : 'Last Name not available'},${"username" in ctx.update.message.from ? ctx.update.message.from.username : "Username not available"},${ctx.update.message.from.id},${ctx.update.message.message_id}\nText : <br>${ctx.update.message.text}</b>
+			Meta Message : ${"first_name" in ctx.update.message.from ? ctx.update.message.from.first_name : 'First Name not available'} ${"last_name" in ctx.update.message.from ? ctx.update.message.from.last_name : 'Last Name not available'},${"username" in ctx.update.message.from ? ctx.update.message.from.username : "Username not available"},${ctx.update.message.from.id},${ctx.update.message.message_id}\nText : <b>${ctx.update.message.text}</b>
 		`;
 		bot.telegram.sendMessage(owner_id, message, { parse_mode: 'HTML' });
 	}

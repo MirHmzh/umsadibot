@@ -30,6 +30,7 @@ services:
       - DB_PASS=${DB_PASS}
       - DB_NAME=${DB_NAME}
       - ENV=${ENV}
+      - OWNER_ID=${OWNER_ID}
     logging:
       options:
         max-size: 10m
