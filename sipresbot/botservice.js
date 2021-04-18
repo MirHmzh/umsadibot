@@ -141,7 +141,7 @@ bot.on('text', (ctx) => {
 					let first_name = idx.first_name,
 						last_name = idx.last_name,
 						chatid = idx.subscriber;
-					msg += `${first_name} ${last_name} - ${chatid}`;
+					msg += `${first_name} ${last_name} - ${chatid}\n`;
 				});
 				bot.telegram.sendMessage(owner_id, msg);
 			});
